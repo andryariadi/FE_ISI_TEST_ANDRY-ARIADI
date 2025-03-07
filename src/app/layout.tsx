@@ -20,8 +20,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${outfit.className} antialiased bg-amber-500`}>{children}</body>
-      <Toaster position="top-center" />
+      <body className={`${outfit.className} antialiased bg-amber-500`}>
+        {children}
+        <Toaster position="top-center" />
+      </body>
     </html>
   );
 }
