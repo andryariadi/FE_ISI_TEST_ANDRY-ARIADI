@@ -9,7 +9,7 @@ export default function Home() {
 
   return (
     <main className="bg-rose-700">
-      <h1 className="text-3xl font-bold text-center text-white">Hello, world!</h1>
+      <h1 className="text-3xl font-bold text-center text-white">Count, App!</h1>
       <p className="text-center text-white">Count: {count}</p>
       <button className="block mx-auto mt-4 px-4 py-2 bg-violet-500 rounded" onClick={() => setCount(count + 1)}>
         Increment
