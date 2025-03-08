@@ -2,7 +2,7 @@ import jwt, { JwtPayload } from "jsonwebtoken";
 import bcrypt from "bcryptjs";
 
 interface TokenPayload extends JwtPayload {
-  userId: number;
+  userId: string;
   role: string;
 }
 
