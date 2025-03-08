@@ -18,7 +18,6 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Username already exists" }, { status: 400 });
     }
 
-    // Buat user baru
     const user = await prisma.user.create({
       data: {
         username,
@@ -30,7 +29,6 @@ export async function POST(request: Request) {
 
     console.log(user, "<--- User created successfully");
 
-    // Kembalikan response sukses
     return NextResponse.json({ message: "User created successfully", user }, { status: 201 });
   } catch (error) {
     if (error instanceof Error) {
