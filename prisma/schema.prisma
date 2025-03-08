@@ -14,21 +14,25 @@ datasource db {
 }
 
 model User {
-  id       String @id @default(uuid())
-  username String @unique
-  password String
-  role     String
-  jobTitle String
+  id        String   @id @default(uuid())
+  username  String   @unique
+  password  String
+  role      String
+  jobTitle  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
   tasks         Task[] @relation("CreatedBy")
   assignedTasks Task[] @relation("AssignedTo")
 }
 
 model Task {
-  id          String @id @default(uuid())
+  id          String   @id @default(uuid())
   title       String
   description String
-  status      String @default("Not Started")
+  status      String   @default("Not Started")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 
   assignedTo   User?   @relation("AssignedTo", fields: [assignedToId], references: [id])
   assignedToId String?
@@ -44,6 +48,8 @@ model Log {
   taskId String
   task   Task   @relation(fields: [taskId], references: [id])
 
-  changes   String
+  changes String
+
   createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }

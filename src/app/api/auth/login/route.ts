@@ -36,10 +36,10 @@ export async function POST(request: Request) {
     return NextResponse.json({ message: "Login successful", user }, { status: 200 });
   } catch (error) {
     if (error instanceof Error) {
-      console.error(error.message, "<--- Error in login route");
+      console.error(error.message, "<---Error in login route");
       return NextResponse.json({ error: "An error occurred during login", details: error.message }, { status: 500 });
     } else {
-      console.error(error, "<--- Unknown error in login route");
+      console.error(error, "<---Unknown error in login route");
       return NextResponse.json({ error: "An unknown error occurred during login" }, { status: 500 });
     }
   }

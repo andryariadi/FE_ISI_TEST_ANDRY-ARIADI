@@ -12,10 +12,10 @@ export async function POST(request: Request) {
     return NextResponse.json({ message: "Logout successful" }, { status: 200 });
   } catch (error) {
     if (error instanceof Error) {
-      console.error(error.message, "<--- Error in logout route");
+      console.error(error.message, "<---Error in logout route");
       return NextResponse.json({ error: "An error occurred during logout", details: error.message }, { status: 500 });
     } else {
-      console.error(error, "<--- Unknown error in logout route");
+      console.error(error, "<---Unknown error in logout route");
       return NextResponse.json({ error: "An unknown error occurred during logout" }, { status: 500 });
     }
   }

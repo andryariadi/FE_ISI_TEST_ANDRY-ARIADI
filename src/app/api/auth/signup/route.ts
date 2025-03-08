@@ -27,15 +27,15 @@ export async function POST(request: Request) {
       },
     });
 
-    console.log(user, "<--- User created successfully");
+    console.log(user, "<---User created successfully");
 
     return NextResponse.json({ message: "User created successfully", user }, { status: 201 });
   } catch (error) {
     if (error instanceof Error) {
-      console.error(error.message, "<--- Error in signup route");
+      console.error(error.message, "<---Error in signup route");
       return NextResponse.json({ error: "An error occurred during signup", details: error.message }, { status: 500 });
     } else {
-      console.error(error, "<--- Unknown error in signup route");
+      console.error(error, "<---Unknown error in signup route");
       return NextResponse.json({ error: "An unknown error occurred during signup" }, { status: 500 });
     }
   }

@@ -20,6 +20,7 @@ export async function GET(request: Request) {
     }
 
     const tasks = await prisma.task.findMany({
+      orderBy: { createdAt: "desc" },
       include: {
         assignedTo: {
           select: {
@@ -88,7 +89,7 @@ export async function POST(request: Request) {
       console.error(error.message, "<--- Error in creating task");
       return NextResponse.json({ error: "An error occurred while creating task", details: error.message }, { status: 500 });
     } else {
-      console.error(error, "<--- Unknown error in creating task");
+      console.error(error, "<---Unknown error in creating task");
       return NextResponse.json({ error: "An unknown error occurred while creating task" }, { status: 500 });
     }
   }
