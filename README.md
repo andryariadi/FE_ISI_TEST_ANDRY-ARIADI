@@ -148,3 +148,66 @@ docker-compose up
 docker-compose up --build
 docker-compose up --watch
 docker-compose down -v
+
+docker-compose exec app npx prisma migrate dev --name init
+docker-compose exec app npx prisma studio
+
+1. docker-compose up
+   Gunakan perintah ini jika:
+
+Anda hanya mengubah konfigurasi service (seperti environment variables, ports, volumes, dll.) di file compose.yaml.
+
+Anda tidak mengubah Dockerfile atau file lain yang memengaruhi pembangunan image.
+
+Anda tidak ingin membangun ulang image yang sudah ada.
+
+Contoh perubahan yang cocok untuk docker-compose up:
+
+Menambahkan environment variable baru.
+
+Mengubah port mapping.
+
+Menambahkan volume.
+
+Perintah:
+
+bash
+Copy
+docker-compose up 2. docker-compose up --build
+Gunakan perintah ini jika:
+
+Anda mengubah Dockerfile atau file lain yang memengaruhi pembangunan image (seperti menambahkan dependensi baru di package.json).
+
+Anda ingin memastikan image dibangun ulang dengan perubahan terbaru.
+
+Anda menambahkan service baru yang memerlukan pembangunan image.
+
+Contoh perubahan yang cocok untuk docker-compose up --build:
+
+Mengubah Dockerfile.
+
+Menambahkan dependensi baru di package.json.
+
+Menambahkan service baru yang memerlukan image custom.
+
+Perintah:
+
+bash
+Copy
+docker-compose up --build
+Kapan Harus Menggunakan --build?
+a. Jika Anda Mengubah Dockerfile
+Setiap kali Anda mengubah Dockerfile, Anda harus menjalankan docker-compose up --build untuk memastikan image dibangun ulang dengan perubahan terbaru.
+
+b. Jika Anda Mengubah Dependensi
+Jika Anda menambahkan atau mengubah dependensi di package.json, requirements.txt, atau file sejenis, Anda perlu menjalankan docker-compose up --build untuk memastikan dependensi baru di-install.
+
+c. Jika Anda Menambahkan Service Baru
+Jika Anda menambahkan service baru di compose.yaml yang memerlukan image custom, Anda perlu menjalankan docker-compose up --build.
+
+Kapan Cukup Menggunakan docker-compose up?
+a. Jika Anda Hanya Mengubah Konfigurasi
+Jika Anda hanya mengubah konfigurasi service (seperti environment variables, ports, atau volumes), Anda cukup menjalankan docker-compose up.
+
+b. Jika Anda Tidak Mengubah Dockerfile atau Dependensi
+Jika tidak ada perubahan yang memengaruhi pembangunan image, Anda tidak perlu membangun ulang image.
