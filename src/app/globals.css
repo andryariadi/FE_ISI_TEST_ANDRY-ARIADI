@@ -4,7 +4,8 @@
   --background: #ffffff;
   --foreground: #171717;
   --logo: #14c688;
-  --bgrd: #1a1a1a;
+  --bgrd: #131619;
+  --bgdark: #0d0f10;
 }
 
 @theme inline {
@@ -12,6 +13,7 @@
   --color-foreground: var(--foreground);
   --color-logo: var(--logo);
   --color-bgrd: var(--bgrd);
+  --color-bgdark: var(--bgdark);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -24,4 +26,24 @@
 body {
   background: var(--background);
   color: var(--foreground);
+}
+
+.text-logo {
+  color: var(--logo);
+}
+
+.bg-bgrd {
+  background: var(--bgrd);
+}
+
+.bg-dark {
+  background: var(--bgdark);
+}
+
+.border-logo {
+  border-color: var(--logo);
+}
+
+.border-dark {
+  border-color: var(--bgdark);
 }
